@@ -1,17 +1,8 @@
 provider "aws" {
-  region = "ap-south-1"
+region = "ap-south-1"
 }
-
-terraform {
-  backend "s3" {
-    bucket = "tfstate-terraform"
-    key    = "terraform.tfstate"
-    region = "ap-south-1"
-  }
-}
-
 module "ec2" {
-  source        = "./ec2-alb/ec2-stack"
+  source        = "git::https://github.com/Bhavleenkaur7/terraform/tree/staging/ec2-alb/ec2-stack/"
   ami_id        = var.ami_id
   name          = var.name
   ec2_subnet_id = var.ec2_subnet_id
@@ -28,23 +19,19 @@ module "ec2" {
   port        = var.port
   protocol    = var.protocol
   arn         = var.arn
-  #variables               = "${var.variables}"
-}
-
-locals {
-  name = "ecs-service"
-  environment = "dev"
-}
 module "ecs-service" {
-  name = "${local.name}"
-  source = "./ecs-service/modules/ecs-service"
-  alb_dns_name = "${var.alb_dns_name}"
-  alb_listener = "${var.alb_listener}"
-  alb_zone_id = "${var.alb_zone_id}"
-  cluster = "${var.cluster}"
-  container_definitions = "${var.container_definitions}"
-  iam_role = "${var.iam_role}"
-  rule_priority = "${var.rule_priority}"
-  vpc_id = "${var.vpc_id}"
-  zone_id = "${var.zone_id}"
+  source = "git::https://github.com/Bhavleenkaur7/terraform/tree/staging/ecs-service/modules/ecs-service/"
+
+  name                  = "example"
+  environment           = "testing"
+  desired_count         = "1"
+  cluster               = "example-cluster"
+  vpc_id                = "vpc-XXXXXXX"
+  zone_id               = "Z4KAPRWWNC7JR"
+  iam_role              = "arn:aws:iam::12345678910:role/ec2_role"
+  rule_priority         = "10"
+  alb_listener          = "arn:aws:elasticloadbalancing:eu-west-1:12345678910:listener/app/example/1e590za2072344a6nc01fh545fb2301d1"
+  alb_zone_id           = "Z4KAPRXXXC7JR"
+  alb_dns_name          = "example"
+  container_definitions = "${file("container_definitions.json")}"
 }
