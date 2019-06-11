@@ -1,3 +1,8 @@
+variable "aws_region" {
+  description = "AWS Region"
+  type = "string"
+  default = "us-east-1"
+}
 variable "access_key" {
   description = "Enter your access key"
   type = "string"
@@ -11,11 +16,11 @@ variable "secret_key" {
 variable "bucket" {
   description = "Enter name of the bucket that will be acting as terraform backend"
   type = "string"
-  default = "infra-terraform"
+  default = "ttn-infra-terraform"
 }
 
 variable "bucket_region" {
   description = "Region of S3 Bucket Region"
   type = "string"
-  default = "infra-terraform"
+  default = "us-east-1"
 }

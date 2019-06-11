@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-south-1"
+  region = "${var.aws_region}"
   access_key = "${var.access_key}"
   secret_key = "${var.secret_key}"
 }
@@ -25,8 +25,8 @@ module "ec2" {
   arn           = "var.arn"
 }
 module "ecs-service" {
-  source = "./ecs-service/modules/ecs-service/"
-
+  launch = false
+  source = "./ecs-service/"
   name                  = "example"
   environment           = "testing"
   desired_count         = "1"

@@ -26,7 +26,7 @@ module "ec2" {
 
 module "securitygroup" {
   source             = "./module/securitygroup"
-  name                = "${var.name}"
+  name               = "${var.name}"
   vpc_id             = "${var.vpc_id}"  
   #port               = "${var.port}"
 }
