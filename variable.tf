@@ -8,7 +8,7 @@ variable "secret_key" {
   type =  "string"
 }
 
-variable "bucket" {
-  description = "Enter name of the bucket that will be acting as terraform backend"
-  type = "string"
-}
+# variable "bucket" {
+#   description = "Enter name of the bucket that will be acting as terraform backend"
+#   type = "string"
+# }
