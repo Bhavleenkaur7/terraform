@@ -13,3 +13,9 @@ variable "bucket" {
   type = "string"
   default = "infra-terraform"
 }
+
+variable "bucket_region" {
+  description = "Region of S3 Bucket Region"
+  type = "string"
+  default = "infra-terraform"
+}
