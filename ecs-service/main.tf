@@ -1,6 +1,13 @@
 provider "aws" {
   region = "us-east-1"
 }
+terraform {
+  backend "s3" {
+    bucket = "tfstate-terraform"
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+  }
+}
 locals {
   name = "ecs-service"
   environment = "dev"
