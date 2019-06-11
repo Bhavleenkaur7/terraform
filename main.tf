@@ -11,7 +11,7 @@ terraform {
   }
 }
 module "ec2" {
-  source        = "git::https://github.com/Bhavleenkaur7/terraform/tree/staging/ec2-alb/ec2-stack/"
+  source        = "./ec2-alb/ec2-stack/"
   ami_id        = var.ami_id
   name          = var.name
   ec2_subnet_id = var.ec2_subnet_id
@@ -30,7 +30,7 @@ module "ec2" {
   arn         = var.arn
 }
 module "ecs-service" {
-  source = "git::https://github.com/Bhavleenkaur7/terraform/tree/staging/ecs-service/modules/ecs-service/"
+  source = "./ecs-service/modules/ecs-service/"
 
   name                  = "example"
   environment           = "testing"
