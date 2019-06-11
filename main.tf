@@ -28,6 +28,7 @@ module "ec2" {
   port        = var.port
   protocol    = var.protocol
   arn         = var.arn
+}
 module "ecs-service" {
   source = "git::https://github.com/Bhavleenkaur7/terraform/tree/staging/ecs-service/modules/ecs-service/"
 
