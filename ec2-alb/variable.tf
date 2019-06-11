@@ -1,7 +1,7 @@
 variable "name" {
   description = "Unique name of your Terraform environment to be used for naming and tagging resources"
-  type = "string"
-  default = "test"
+  type        = string
+  default     = "test"
 }
 
 variable "tags" {
@@ -11,8 +11,8 @@ variable "tags" {
 
 variable "vpc_id" {
   description = "Id of the VPC to which your AMI will be deployed"
-  type = "string"
-  default = "vpc-958fa0fd"
+  type        = string
+  default     = "vpc-958fa0fd"
 }
 
 variable "instance_type" {
@@ -22,8 +22,8 @@ variable "instance_type" {
 
 variable "ami_id" {
   description = "AMI that will be launched"
-  type = "string"
-  default = "ami-06832d84cd1dbb448"
+  type        = string
+  default     = "ami-06832d84cd1dbb448"
 }
 
 variable "port" {
@@ -36,14 +36,14 @@ variable "protocol" {
   default     = "HTTP"
 }
 
-variable "key_name"{
+variable "key_name" {
   default = "bhavya1.pem"
 }
 
 variable "ec2_subnet_id" {
   description = "Subnet(s) to which the EC2 instance will be deployed"
-  type = "string"
-  default = "subnet-25890c69"
+  type        = string
+  default     = "subnet-25890c69"
 }
 
 variable "volume_size" {
@@ -53,7 +53,7 @@ variable "volume_size" {
 
 variable "arn" {
   description = "alb arn"
-  default = "arn:aws:elasticloadbalancing:ap-south-1:521141440450:listener/app/terraform-ec2/4da163a5881680a9/b509f31de06392f3" 
+  default     = "arn:aws:elasticloadbalancing:ap-south-1:521141440450:listener/app/terraform-ec2/4da163a5881680a9/b509f31de06392f3"
 }
 
 variable "value" {
