@@ -3,6 +3,13 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
 }
+terraform {
+  backend "s3" {
+    bucket = var.bucket
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+  }
+}
 module "ec2" {
   source        = "git::https://github.com/Bhavleenkaur7/terraform/tree/staging/ec2-alb/ec2-stack/"
   ami_id        = var.ami_id
@@ -13,7 +20,7 @@ module "ec2" {
   tags = merge(
     {
       "Name" = var.name
-    },
+    }
     var.tags,
   )
   volume_size = var.volume_size
