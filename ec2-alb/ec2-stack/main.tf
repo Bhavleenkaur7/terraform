@@ -12,7 +12,7 @@ module "ec2" {
   #vpc_security_group_ids  = ["${module.ec2.sg_id_ec2}"]
   sg_id_ec2               = "${module.securitygroup.sg_id_ec2}" 
  # ebs_optimized           = "false"
-  #associate_public_ip_address = "true"
+  associate_public_ip_address = "${var.associate_public_ip_address}"
   key_name                = "${var.key_name}" 
   tags                    = "${merge(map("Name", "${var.name}"), var.tags)}"
   #volume_tags             = "${merge(map("Name", "${var.name}"), var.tags)}"
@@ -28,7 +28,7 @@ module "securitygroup" {
   source             = "./module/securitygroup"
   name                = "${var.name}"
   vpc_id             = "${var.vpc_id}"  
-  port               = "${var.port}"
+  #port               = "${var.port}"
 }
 
 module "alb" {
@@ -43,5 +43,6 @@ module "alb" {
   vpc_id             = "${var.vpc_id}"
   #target_id          = "${module.ec2.instance_id}"
   instance_id        = "${module.ec2.instance_id}"
+  field              = "${var.field}"
   #sg_id_alb          = "${module.securitygroup.sg_id_alb}"
 }

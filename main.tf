@@ -17,17 +17,12 @@ module "ec2" {
   ec2_subnet_id = var.ec2_subnet_id
   instance_type = var.instance_type
   key_name      = var.key_name
-  tags = merge(
-    {
-      "Name" = var.name
-    }
-    var.tags,
-  )
-  volume_size = var.volume_size
-  vpc_id      = var.vpc_id
-  port        = var.port
-  protocol    = var.protocol
-  arn         = var.arn
+  tags          = var.tags
+  volume_size   = var.volume_size
+  vpc_id        = var.vpc_id
+  port          = var.port
+  protocol      = var.protocol
+  arn           = var.arn
 }
 module "ecs-service" {
   source = "./ecs-service/modules/ecs-service/"

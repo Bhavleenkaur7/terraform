@@ -81,6 +81,9 @@ variable "value" {
   default = "aspire.tothenew.net" 
 }
   
-
-
-
+variable "field" {
+  default = "host-header"
+}
+variable "associate_public_ip_address" {
+  default = "false"
+}

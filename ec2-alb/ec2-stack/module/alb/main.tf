@@ -29,7 +29,7 @@ resource "aws_lb_listener_rule" "static"{
   }
 
   condition {
-    field  = "host-header"
+    field  = "${var.field}"
     values = ["${var.value}"]
   }
 

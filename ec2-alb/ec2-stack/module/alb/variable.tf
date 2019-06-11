@@ -48,3 +48,7 @@ variable "arn" {
 variable "value"{
   default = "aspire.tothenew.net"
 }
+
+variable "field"{
+  default = "host-header"
+}

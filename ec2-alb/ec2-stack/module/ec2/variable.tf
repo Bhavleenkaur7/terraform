@@ -40,3 +40,7 @@ variable "sg_id_ec2" {
 variable "vpc_id" {
   default = "vpc-958fa0fd"
 }
+
+variable "associate_public_ip_address" {
+  default = "false"
+}
