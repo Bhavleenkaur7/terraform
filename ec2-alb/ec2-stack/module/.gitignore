@@ -1,6 +1,0 @@
-.terraform
-aws.tf
-terraform.tfstate
-.aws
-.temp/
-.terraform/`
