@@ -17,7 +17,7 @@ Usage
 
 # FOR EC2-ALB
 EC2-ALB is hardcoded .
-
+```
 module "ec2-alb" {
   source        = "./ec2-stack/"
   ami_id        = "var.ami_id"
@@ -33,11 +33,11 @@ module "ec2-alb" {
   arn           = "var.arn_of_alb"
   associate_public_ip_address = "var.public_ip"
 }
-
+```
 # FOR ECS-SERVICE
 Launch is set to false by default .
 All the variables are directly hardcoded
-
+```
 module "ecs-service" {
   launch = false
   source = "./ecs-service/"
@@ -54,4 +54,4 @@ module "ecs-service" {
   alb_dns_name          = "example"
   container_definitions = "${file("container_definitions.json")}"
 }
-
+```
