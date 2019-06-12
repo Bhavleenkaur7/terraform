@@ -1,31 +1,29 @@
 provider "aws" {
   region = "${var.aws_region}"
-  access_key = "${var.access_key}"
-  secret_key = "${var.secret_key}"
 }
 terraform {
   backend "s3" {
-    bucket = "test-terraform123"
+    bucket = "ttn-infra-terraform"
     key    = "terraform.tfstate"
     region = "us-east-1"
   }
 }
-module "ec2-alb" {
+module "aspire" {
   source        = "./ec2-stack/"
-  ami_id        = "ami-XXXXXXXX"
-  name          = "test"
-  ec2_subnet_id = "subnet-XXXXXx"
-  instance_type = "t2.XXX"
-  key_name      = "XXXXX.pem"
-  #tags          = "Name = test-terraform"
+  ami_id        = "ami-0bdd7ff8515b97d84"
+  name          = "aspire"
+  ec2_subnet_id = "subnet-06332e40"
+  instance_type = "t2.micro"
+  key_name      = "tothenew"
+  tags          = {Name= "aspire", CreateBy = "terraform"}
   volume_size   = "20"
-  vpc_id        = "vpc-XXXXXXX"
+  vpc_id        = "vpc-a123f1c4"
   port          = "22"
   protocol      = "tcp"
-  arn           = "arn:XXXXXXXXX"
+  arn           = "arn:aws:elasticloadbalancing:us-east-1:743930152640:listener/app/ttn-infra/1930fc11e1df38d0/963819363385483e"
   associate_public_ip_address = "false"
   field         =  "host-header"
-  value         = "aspire.tothenew.net"
+  value         =  "aspire.tothenew.net"
 }
 module "ecs-service" {
   launch = false
