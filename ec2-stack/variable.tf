@@ -6,7 +6,8 @@ variable "name" {
 
 variable "tags" {
   description = "Additional tags to be applied to all resources"
-  default     = {}
+  type = "map"
+  default     = {Name= "test"}
 }
 
 variable "vpc_id" {

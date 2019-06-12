@@ -1,7 +1,7 @@
 module "ec2" {
   source = "./module/ec2"
   ami_id                  = "${var.ami_id}"
-  name                     = "${var.name}"
+  #name                     = "${var.name}"
   #vpc                     = "${var.vpc_id}"
   ec2_subnet_id            = "${var.ec2_subnet_id}"
   instance_type           = "${var.instance_type}"
@@ -10,7 +10,7 @@ module "ec2" {
  # ebs_optimized           = "false"
   associate_public_ip_address = "${var.associate_public_ip_address}"
   key_name                = "${var.key_name}" 
-  tags                    = "${merge(map("Name", "${var.name}"), var.tags)}"
+  tags                    = "${var.tags}"
   #volume_tags             = "${merge(map("Name", "${var.name}"), var.tags)}"
   #disable_api_termination = "${var.data_protection}"
   #public_key              = "${var.public_key}"
@@ -24,12 +24,12 @@ module "securitygroup" {
   source             = "./module/securitygroup"
   name                = "${var.name}"
   vpc_id             = "${var.vpc_id}"  
-  #port               = "${var.port}"
+  port               = "${var.port}"
 }
 
 module "alb" {
   source             = "./module/alb"
-  #name               = "${var.name}"
+  name               = "${var.name}"
   #sg_id_alb          = "${module.securitygroup.sg_id_alb}"
   #subnets            = "${var.alb_subnet_ids}"
   #alb_subnet_ids     = "${var.alb_subnet_ids}"
@@ -40,6 +40,7 @@ module "alb" {
   #target_id          = "${module.ec2.instance_id}"
   instance_id        = "${module.ec2.instance_id}"
   field              = "${var.field}"
+  value              = "${var.value}"  
   #sg_id_alb          = "${module.securitygroup.sg_id_alb}"
 }
 

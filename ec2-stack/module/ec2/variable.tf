@@ -1,13 +1,14 @@
 variable "tags" {
   description = "Additional tags to be applied to all resources"
-  default     = {}
+  type        = "map"
+  default     = {Name = "test"}
 }
 
 
-variable "name" {
-  description = "Unique name of your Terraform  to be used for naming and tagging resources"
-  type = "string"
-}
+# variable "name" {
+#   description = "Unique name of your Terraform  to be used for naming and tagging resources"
+#   type = "string"
+# }
 
 variable "instance_type" {
   description = "EC2 instance type"

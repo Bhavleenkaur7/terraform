@@ -5,25 +5,27 @@ provider "aws" {
 }
 terraform {
   backend "s3" {
-    bucket = "${var.bucket}"
+    bucket = "test-terraform123"
     key    = "terraform.tfstate"
-    region = "${var.bucket_region}"
+    region = "us-east-1"
   }
 }
 module "ec2-alb" {
   source        = "./ec2-stack/"
-  ami_id        = "var.ami_id"
-  name          = "var.name"
-  ec2_subnet_id = "var.ec2_subnet_id"
-  instance_type = "var.instance_type"
-  key_name      = "var.key_name"
-  tags          = "var.tags"
-  volume_size   = "var.volume_size"
-  vpc_id        = "var.vpc_id"
-  port          = "var.port_ec2"
-  protocol      = "var.protocol_ec2"
-  arn           = "var.arn_of_alb"
-  associate_public_ip_address = "var.public_ip"
+  ami_id        = "ami-XXXXXXXX"
+  name          = "test"
+  ec2_subnet_id = "subnet-XXXXXx"
+  instance_type = "t2.XXX"
+  key_name      = "XXXXX.pem"
+  #tags          = "Name = test-terraform"
+  volume_size   = "20"
+  vpc_id        = "vpc-XXXXXXX"
+  port          = "22"
+  protocol      = "tcp"
+  arn           = "arn:XXXXXXXXX"
+  associate_public_ip_address = "false"
+  field         =  "host-header"
+  value         = "aspire.tothenew.net"
 }
 module "ecs-service" {
   launch = false

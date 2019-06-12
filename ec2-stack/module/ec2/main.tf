@@ -9,8 +9,8 @@ resource "aws_instance" "this" {
  # ebs_optimized           = "false"
   associate_public_ip_address = "${var.associate_public_ip_address}"
   key_name                = "${var.key_name}" 
-  tags                    = "${merge(map("Name", "${var.name}"), var.tags)}"
-  volume_tags             = "${merge(map("Name", "${var.name}"), var.tags)}"
+  tags                    = "${var.tags}"
+  volume_tags             = "${var.tags}"
   #disable_api_termination = "${var.data_protection}"
   #user_data               = "${var.user_data}"
 
