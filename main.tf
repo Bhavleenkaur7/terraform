@@ -20,9 +20,9 @@ module "ec2-alb" {
   tags          = "var.tags"
   volume_size   = "var.volume_size"
   vpc_id        = "var.vpc_id"
-  port          = "var.port"
-  protocol      = "var.protocol"
-  arn           = "var.arn"
+  port          = "var.port_ec2"
+  protocol      = "var.protocol_ec2"
+  arn           = "var.arn_of_alb"
   associate_public_ip_address = "var.public_ip"
 }
 module "ecs-service" {
