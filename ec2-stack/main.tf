@@ -29,7 +29,7 @@ module "securitygroup" {
 module "alb" {
   source             = "./module/alb"
   name               = "${var.name}"
-  #sg_id_alb          = "${module.securitygroup.sg_id_alb}"
+  arn                = "${var.arn}"
   #subnets            = "${var.alb_subnet_ids}"
   #alb_subnet_ids     = "${var.alb_subnet_ids}"
   tags               = "${var.tags}"

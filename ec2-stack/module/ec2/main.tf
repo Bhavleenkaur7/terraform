@@ -20,8 +20,3 @@ resource "aws_instance" "this" {
   }
 }
 
-resource "aws_key_pair" "deployer" {
-  key_name   = "${var.key_name}"
-  public_key = "xxxxxxxxxxxxENTER YOUR SYSTEM PUBLIC KEY HERExxxxxxxxxxxxxxxxx"
-}
-
