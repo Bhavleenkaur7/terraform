@@ -41,11 +41,6 @@ variable "key_name"{
   default = "bhavya1.pem"
 }
 
-# variable "public_key" {
-#   description = "enter public key"
-#   type = "string"
-# }
-
 variable "ec2_subnet_id" {
   description = "Subnet(s) to which the EC2 instance will be deployed"
   type = "string"

@@ -13,7 +13,6 @@ module "ec2" {
   tags                    = "${var.tags}"
   #volume_tags             = "${merge(map("Name", "${var.name}"), var.tags)}"
   #disable_api_termination = "${var.data_protection}"
-  #public_key              = "${var.public_key}"
   volume_size           = "${var.volume_size}"
   #delete_on_termination = "${var.data_protection ? false : true}"
   #user_data               = "${var.user_data}"

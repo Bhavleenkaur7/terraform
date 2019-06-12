@@ -29,9 +29,6 @@ variable "key_name" {
 
 }
 
-#variable "public_key" {
-
-#}
 variable "volume_size" {
 }
 variable "sg_id_ec2" {
