@@ -26,6 +26,7 @@ module "ec2-alb" {
   associate_public_ip_address = "false"
   field         =  "host-header"
   value         = "aspire.tothenew.net"
+  public_key    = "xxxxx"
 }
 module "ecs-service" {
   launch = false
