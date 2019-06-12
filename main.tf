@@ -10,7 +10,7 @@ terraform {
     region = "${var.bucket_region}"
   }
 }
-module "ec2" {
+module "ec2-alb" {
   source        = "./ec2-stack/"
   ami_id        = "var.ami_id"
   name          = "var.name"
@@ -23,6 +23,7 @@ module "ec2" {
   port          = "var.port"
   protocol      = "var.protocol"
   arn           = "var.arn"
+  associate_public_ip_address = "var.public_ip"
 }
 module "ecs-service" {
   launch = false
