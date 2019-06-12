@@ -8,15 +8,15 @@ resource "aws_security_group" "ec2" {
   }
 }
 
-resource "aws_security_group_rule" "ec2_ingress_ec2" {
-  description              = "Self ingress"
-  type                     = "ingress"
-  from_port                = 0
-  to_port                  = 0
-  protocol                 = -1
-  security_group_id        = "${aws_security_group.ec2.id}"
-  source_security_group_id = "${aws_security_group.ec2.id}"
-}
+# resource "aws_security_group_rule" "ec2_ingress_ec2" {
+#   description              = "Self ingress"
+#   type                     = "ingress"
+#   from_port                = 0
+#   to_port                  = 0
+#   protocol                 = -1
+#   security_group_id        = "${aws_security_group.ec2.id}"
+#   source_security_group_id = "${aws_security_group.ec2.id}"
+# }
 
 resource "aws_security_group_rule" "ec2_open" {
    description              = "for ssh"
@@ -25,7 +25,7 @@ resource "aws_security_group_rule" "ec2_open" {
    to_port                  = 22
    protocol                 = "tcp"
    security_group_id        = "${aws_security_group.ec2.id}"
-   source_security_group_id = "${aws_security_group.ec2.id}"
+   source_security_group_id = "${var.alb_sec_id}"
  }
 
  resource "aws_security_group_rule" "http" {
@@ -35,7 +35,7 @@ resource "aws_security_group_rule" "ec2_open" {
    to_port                  = 80
    protocol                 = "tcp"
    security_group_id        = "${aws_security_group.ec2.id}"
-   source_security_group_id = "${aws_security_group.ec2.id}"
+   source_security_group_id = "${var.alb_sec_id}"
  }
 
 resource "aws_security_group_rule" "ec2_egress_all" {

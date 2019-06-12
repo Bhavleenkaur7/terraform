@@ -24,6 +24,7 @@ module "securitygroup" {
   name                = "${var.name}"
   vpc_id             = "${var.vpc_id}"  
   port               = "${var.port}"
+  source_security_group_id = "${var.alb_sec_id}"
 }
 
 module "alb" {

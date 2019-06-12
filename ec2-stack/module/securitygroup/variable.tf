@@ -13,6 +13,9 @@ variable "tags" {
   default     = {}
 }
 
-variable "port" {
+variable "port" {  
   
+}
+variable "alb_sec_id" {
+  description = "sg id of alb"
 }

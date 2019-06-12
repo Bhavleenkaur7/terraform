@@ -63,10 +63,10 @@ variable "sg_id_ec2" {
 }
 
 
-#variable "sg_id_alb" {
- # description = "sg for alb"
- # default = ""
-#}
+variable "alb_sec_id" {
+  description = "sg for alb"
+ 
+}
 
 variable "arn" {
   description = "alb arn"
